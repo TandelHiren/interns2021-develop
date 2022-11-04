@@ -1,0 +1,66 @@
+<one-automation-breadcrumb></one-automation-breadcrumb>
+<section class="d-flex flex-column h-100 bg-white overflow-hidden">
+  <!-- <h6 class="p-3 text-capitalize border-bottom font-weight-bold">
+    Last Execution Summary
+  </h6> -->
+  <!--date range picker start -->
+  <form [formGroup]="applicationSummaryFilter" class="border-bottom p-3">
+    <div class="d-flex align-items-center justify-content-end">
+      <!-- multi select dropdown start-->
+      <div class="col-3 p-0">
+        <ng-multiselect-dropdown class="form-control select-dropdown p-0 border-0" [placeholder]="'Select Module List'"
+          [data]="moduleList" formControlName="moduleId" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+          (onDeSelect)="onItemDeSelect($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <!-- multi select dropdown end-->
+
+      <div class="position-relative form-group col-3 p-0 mb-0 ml-3">
+        <input type="text" class="form-control justify-content-start cursor-pointer" formControlName="filterRangeDate"
+          #daterangepicker="bsDaterangepicker" bsDaterangepicker [bsConfig]="{ adaptivePosition: true }"
+          placeholder="Select Date">
+        <div class="calendar-input cursor-pointer">
+          <span class="icon-calendar-1" (click)="daterangepicker.toggle()"
+            [attr.aria-expanded]="daterangepicker.isOpen"></span>
+        </div>
+      </div>
+      <button title="Submit" type="submit"
+        class="btn btn-primary btn-md d-flex align-items-center ml-3 justify-content-center"
+        (click)="onSubmitFilter()">Submit</button>
+      <button title="Reset" type="reset"
+        class="btn btn-danger btn-md d-flex align-items-center ml-3 justify-content-center"
+        (click)="onResetFilter()">Reset</button>
+    </div>
+  </form>
+
+  <div *ngIf="applicationSummaryReport.length === 0"
+    class="chart-not-found d-flex justify-content-center align-items-center h-100">
+    Chart Data Not Found
+  </div>
+  <div class="d-flex flex-column overflow-auto overflow-x-hidden h-100" *ngIf="applicationSummaryReport.length">
+    <div class="position-relative">
+      <!-- legends -->
+      <div class="legend-container d-flex align-items-center">
+        <div class="d-flex align-items-center mr-2">
+          <div class="legend-pass"></div>
+          <div class="legend-text"><small>Pass</small></div>
+        </div>
+        <div class="d-flex align-items-center mr-2">
+          <div class="legend-fail"></div>
+          <div class="legend-text"><small>Fail</small></div>
+        </div>
+        <div class="d-flex align-items-center mr-2">
+          <div class="legend-skip"></div>
+          <div class="legend-text"><small>Skip</small></div>
+        </div>
+      </div>
+      <!-- legends -->
+      <div #chart class="report-chart w-100"></div>
+    </div>
+    <!--table starts-->
+    <ng-container *ngIf="isTable">
+      <one-automation-table [tableConfig]="tableConfig"> </one-automation-table>
+    </ng-container>
+    <!--table ends -->
+  </div>
+</section>

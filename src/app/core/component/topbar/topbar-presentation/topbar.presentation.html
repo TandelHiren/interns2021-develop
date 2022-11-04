@@ -1,0 +1,45 @@
+<header id="topbar" class="d-flex align-items-center justify-content-between bg-white shadow-sm">
+    <section class="d-flex align-items-center">
+        <span class="px-4 py-1 border-right d-block">
+      <label for="sidebarToggle" class="position-relative cursor-pointer mb-0" (click)=toggleSideBar()>
+        <span class="icon icon-toggle-menu icon-toggle"></span>
+        </label>
+        </span>
+        <div class="d-flex flex-column pl-4">
+            <!-- This section where page title component attached using portal host -->
+            <h5 id="action">
+                <!-- content will be place dynamically using CDK portal -->
+            </h5>
+            <!-- end section of portal host -->
+            <one-automation-breadcrumb></one-automation-breadcrumb>
+        </div>
+    </section>
+    <aside class="d-flex align-items-center pr-4">
+        <ul class="d-flex align-items-center list-unstyled m-0">
+            <li class="user-profile">
+                <div class="dropdown {{ userProfileState ? 'show' : '' }}">
+                    <button class="btn p-0 d-flex align-items-center dropdown-btn dropdown-toggle" type="button" [popover]="popTemplate" #pop="bs-popover" placement="bottom" [outsideClick]="true" (click)="userProfileBtn()">
+            <span class="username"><span class="font-semi-bold">Welcome,</span> {{ userName }}</span>
+          </button>
+                    <!-- Demo -->
+                    <ng-template #popTemplate>
+                        <!-- <div class="dropdown-menu"> -->
+                        <div class="dropdown dropdown-item border-bottom" (click)="pop.hide()">
+                            <button class="btn btn-transparent dropdown-item d-flex align-items-center p-2" title="Change Password" [routerLink]="'/change-password'">
+                <span class="icon-settings mr-2"></span>
+                <span class="text-capitalize">Change password</span>
+              </button>
+                        </div>
+                        <div class="dropdown dropdown-item" (click)="pop.hide()">
+                            <button class="btn btn-transparent dropdown-item d-flex align-items-center p-2" title="Logout" (click)="logout()">
+                <span class="icon-logout mr-2"></span>
+                <span>Logout</span>
+              </button>
+                        </div>
+                        <!-- </div> -->
+                    </ng-template>
+                </div>
+            </li>
+        </ul>
+    </aside>
+</header>

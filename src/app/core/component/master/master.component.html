@@ -1,0 +1,21 @@
+<section id="wrapper" class="d-flex h-100">
+  <!-- Sidebar -->
+  <input type="checkbox" id="sidebarToggle" class="d-none">
+  <one-automation-sidebar-ui [menuData]="menus" class="sidebar-wrapper h-100"></one-automation-sidebar-ui>
+  <!-- Main Content -->
+  <section id="content-wrapper" class="flex-grow-1 overflow-hidden">
+    <label for="sidebarToggle" class="content-overlay m-0"></label>
+    <div class="d-flex flex-column h-100 overflow-hidden">
+      <!-- Topbar -->
+      <one-automation-topbar-ui [userData]="loggedInUserData?.fullname"></one-automation-topbar-ui>
+      <!-- Main Working area -->
+
+      <!--Ends: Split view -->
+      <main id="content" class="flex-grow-1 overflow-hidden">
+        <router-outlet></router-outlet>
+      </main>
+
+      <!-- End: Main Working Area -->
+    </div>
+  </section>
+</section>

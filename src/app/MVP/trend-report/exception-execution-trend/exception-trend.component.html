@@ -1,0 +1,22 @@
+<one-automation-breadcrumb></one-automation-breadcrumb>
+<!--chart div start-->
+<section class="d-flex flex-column h-100 bg-white overflow-hidden">
+  <one-automation-date-filter class="border-bottom" [moduleList]="moduleList" (filterDate)="receiveFilter($event)">
+  </one-automation-date-filter>
+  <div *ngIf="exceptionTrend.length === 0"
+    class="chart-not-found d-flex justify-content-center align-items-center h-100">
+    Chart Data Not Found
+  </div>
+  <div class="d-flex flex-column overflow-auto overflow-x-hidden h-100" *ngIf="exceptionTrend.length">
+    <div>
+      <div #chart class="report-chart w-100" id="chart_div"></div>
+    </div>
+    <!--chart div end-->
+
+    <!--table starts-->
+    <ng-container *ngIf="isTable">
+      <one-automation-table [tableConfig]="tableConfig"> </one-automation-table>
+    </ng-container>
+  </div>
+
+</section>

@@ -1,0 +1,47 @@
+<h2>fork-join</h2>
+<br>
+<div class="row">
+    <div class="col-md-3 pr-4">
+        <strong>Names</strong>
+        <hr>
+        <select class="form-control" #name>
+            <option value="{{item}}" *ngFor=" let item of nameSource">{{item}}</option>
+        </select>
+
+        <br>
+        <div class="col-md-9 ml-auto">
+            <strong>zip</strong>
+            <hr>
+            <div class="wrapper" id="containerId"></div>
+        </div>
+        <br>
+        <!-- <div class="wrapper">
+            <div class="red">Anup</div>
+            <div class="green">Hiren</div>
+            <div class="blue">Gaurang</div>
+        </div> -->
+    </div>
+    <div class="col-md-3 pr-4">
+        <br>
+        <strong>colors</strong>
+        <hr>
+        <select class="form-control" #color>
+            <option value="{{item}}" *ngFor=" let item of colorSource">{{item}}</option>
+        </select>
+        <br>
+        <div class="col-md-9 ml-auto">
+            <strong>fork-join</strong>
+            <hr>
+            <div class="wrapper" id="containerId2"></div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <!-- <div class="wrapper">
+            <div class="red">Anup</div>
+            <div class="green">Hiren</div>
+            <div class="blue">Gaurang</div>
+        </div> -->
+
+
+</div>

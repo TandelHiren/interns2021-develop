@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <button class="col-sm-4" style="background-color:lavender;" routerLink='/directive'>Directive</button>
+    <button class="col-sm-4" style="background-color:lavenderblush;" routerLink='/pipe'>Pipe</button>
+    <button class="col-sm-4" style="background-color:lavender;" routerLink='/host-listner'>Host listener</button>
+    <button class="col-sm-4" style="background-color:lavender;" routerLink='/bootstrap'>Bootstrap</button>
+    <button class="col-sm-4" style="background-color:rgb(122, 122, 211);" routerLink='/subject'>Subject</button>
+    <button class="col-sm-4" style="background-color:lavenderblush;" routerLink='/behavior-subject'>BehaviorSubject</button>
+    <button class="col-sm-4" style="background-color:lavenderblush;" routerLink='/rxjs'>Rxjs</button>
+    <button class="col-sm-4" style="background-color:red;" routerLink='/use-class'>use-class</button>
+    <button class="col-sm-4" style="background-color:yellowgreen;" routerLink='/use-existing'>use-existing</button>
+    <button class="col-sm-4" style="background-color:blueviolet;" routerLink='/dynamic-component'>Dynamic-component</button>
+  </div>
+    
+</div>
+
+
+<template #alertContainer></template>
+
+<button (click)="createComponent('success')"> create suceess alert</button>
+<button (click)="createComponent('danger')"> create danger alert</button>
+
+
+<!-- <input type="text" [(ngModel)]='title'> -->
+<router-outlet></router-outlet>

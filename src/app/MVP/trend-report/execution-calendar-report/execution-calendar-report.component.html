@@ -1,0 +1,35 @@
+<one-automation-breadcrumb></one-automation-breadcrumb>
+<section class="d-flex flex-column h-100 bg-white p-3 overflow-auto">
+  <div class="row flex-row-reverse no-gutters">
+    <div class="col-md-4 text-md-right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-md btn-outline border-0 font-medium" mwlCalendarPreviousView [view]="view"
+          [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+          Previous
+        </button>
+        <button type="button" class="btn btn-md btn-primary-dark font-medium" mwlCalendarToday [(viewDate)]="viewDate">
+          Today
+        </button>
+        <button type="button" class="btn btn-md btn-outline border-0 font-medium" mwlCalendarNextView [view]="view"
+          [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+          Next
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4 text-md-center">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+
+  </div>
+  <br>
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+      [refresh]="refresh" 
+      (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+  </div>
+  <!--details start-->
+  <one-automation-execution-calender-detail *ngIf="isShowCalenderChart" [executionCalenderDetails]="calenderDetail">
+  </one-automation-execution-calender-detail>
+  <!--details end-->
+</section>

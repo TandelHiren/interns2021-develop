@@ -1,0 +1,13 @@
+<div *ngIf="breadcrumbs[0].label == 'dashboard' else other_breadcrumb">
+</div>
+<ng-template #other_breadcrumb>
+  <nav aria-label="breadcrumb bg-transparent" class="mt-1">
+    <ul class="d-flex align-items-start breadcrumb bg-transparent mb-0 p-0">
+      <li class="breadcrumb-item" *ngFor="let breadcrumb of breadcrumbs; let index=index"
+        [ngStyle]="{pointerEvents:(index + 1) == breadcrumbs.length ? 'none' :'auto'}">
+        <a [routerLink]="[breadcrumb.url]" [title]="breadcrumb.label | titlecase"
+          href="javascript:void(0)">{{breadcrumb.label}}</a>
+      </li>
+    </ul>
+  </nav>
+</ng-template>

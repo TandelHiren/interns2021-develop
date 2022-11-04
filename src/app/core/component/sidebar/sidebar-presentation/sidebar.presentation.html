@@ -1,0 +1,59 @@
+<aside id="primary-nav" class="d-flex flex-column bg-white shadow-sm overflow-hidden h-100">
+  <!-- sidebar-header -->
+  <header class="cursor-pointer">
+    <div class="logo-container d-flex align-items-center p-3" routerLink="/application">
+      <img src="assets/images/logo-sm.png" alt="Brand-logo" class="logo-sm">
+      <img src="assets/images/logo-lg.png" alt="Brand-logo" class="logo-lg">
+    </div>
+  </header>
+  <!-- Nav-items -->
+  <nav class="d-flex h-100 overflow-hidden">
+    <section class="flex-grow-1 overflow-vertical">
+      <ul class="nav flex-column flex-nowrap py-3">
+        <li class="nav-item cursor-pointer" #menuRef *ngFor="let menu of menuData; let i=index; trackBy: trackBy; "
+          (mouseleave)="menu.permisison && !menu.isRouteLink && isSideBarCollapsed"
+          (mouseenter)="menu.permisison && !isSideBarCollapsed && createSubmenuOverLay(menu, menuRef)"
+          (click)="menu.permisison && isSideBarCollapsed && createExpandedSubmenu(menu, i)">
+
+          <a class="nav-link cursor-pointer availableRoute"
+            *ngIf="menu.permisison && menu.subMenus?.length === 0 && menu.name === 'Application'" data-toggle="collapse"
+            aria-controls="visa-toggle" role="button" [attr.aria-expanded]="menu.isOpen" routerLinkActive="active"
+            [routerLink]="menu.link" title="{{ menu.name }}">
+            <span class="icon-nav {{ menu.icon }}"></span>
+            <span class="nav-text">{{ menu.name }}</span>
+          </a>
+
+          <a class="nav-link cursor-pointer availableRoute"
+            *ngIf="menu.permisison && menu.subMenus.length > 0 && menu.name === 'Application'" data-toggle="collapse"
+            aria-controls="visa-toggle" role="button" [attr.aria-expanded]="menu.isOpen" routerLinkActive="active"
+            [routerLink]="menu.link" title="{{ menu.name }}">
+            <span class="icon-nav {{ menu.icon }}"></span>
+            <span class="nav-text">{{ menu.name }}</span>
+          </a>
+
+          <a class="nav-link cursor-pointer availableRoute"
+            *ngIf="menu.isVisibleForUser && menu.subMenus?.length === 0 && menu.name !== 'Application' "
+            routerLinkActive="active" [routerLink]="menu.link" title="{{ menu.name }}">
+            <span class="icon-nav {{ menu.icon }}"></span>
+            <span class="nav-text">{{ menu.name }}</span>
+          </a>
+
+          <a class="nav-link cursor-pointer availableRoute"
+            *ngIf="menu.isVisibleForUser && menu.subMenus?.length > 0 && menu.name !== 'Application' " data-toggle="collapse"
+            aria-controls="visa-toggle" role="button" [attr.aria-expanded]="menu.isOpen" routerLinkActive="active"
+            [routerLink]="menu.link" title="{{ menu.name }}">
+            <span class="icon-nav {{ menu.icon }}"></span>
+            <span class="nav-text">{{ menu.name }}</span>
+          </a>
+          <ng-container #subMenuRef></ng-container>
+        </li>
+      </ul>
+
+    </section>
+  </nav>
+  <!-- Version -->
+  <div class="version-wrapper">
+    <span class="font-weight-semi-bold version-sm pl-3">v{{version}}</span>
+    <span class="font-weight-semi-bold version-lg text-truncate">Version {{version}}</span>
+  </div>
+</aside>

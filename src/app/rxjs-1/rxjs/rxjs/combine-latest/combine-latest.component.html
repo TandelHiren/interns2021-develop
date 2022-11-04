@@ -1,0 +1,21 @@
+
+<h2>combine - latest</h2>
+<br>
+<div class="row">
+    <div class="col-md-3 pr-4">
+        <strong>Names</strong>
+        <hr>
+        <select #name>
+            <option value="{{item}}" *ngFor=" let item of nameSource">{{item}}</option>
+        </select>
+        <br>
+        <br>
+        <strong>colors</strong>
+        <hr>
+        <select #color>
+            <option value="{{item}}" *ngFor=" let item of colorSource">{{item}}</option>
+        </select>
+
+    </div>
+   
+</div>

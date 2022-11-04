@@ -1,0 +1,19 @@
+<h1>Pipe</h1>
+<!-- only get the date there is default pipe is there date -->
+Today's Date is:- {{ date | date}}
+
+<br>
+Price:- {{ price | currency}}
+
+<br>
+Title:- {{ title | titlecase}}
+<br>
+<br>
+
+<!-- in this input fild i'm using twoway binding -->
+<input type = "text" [(ngModel)] = "search">
+<br>
+<br>
+
+<!-- in this foe loop i'm using my custom pipe and pass input twoway bindng parameter -->
+Names:- <div *ngFor="let list of list | listfilter:search">{{ list }}

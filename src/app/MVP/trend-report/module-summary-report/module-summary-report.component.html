@@ -1,0 +1,13 @@
+<one-automation-breadcrumb></one-automation-breadcrumb>
+<section class="d-flex flex-column h-100 bg-white">
+    <!-- <h6 class="p-3 text-capitalize border-bottom font-weight-bold">
+        Module summary report
+    </h6> -->
+    <div *ngIf="moduleSummaryData.length === 0" class="chart-not-found d-flex justify-content-center align-items-center h-100"> Chart Data Not Found</div>
+    <div #chart class="report-chart w-100"></div>
+    <!--table starts-->
+    <ng-container *ngIf="isTable">
+        <one-automation-table [tableConfig]="tableConfig"> </one-automation-table>
+    </ng-container>
+    <!--table ends -->
+</section>
